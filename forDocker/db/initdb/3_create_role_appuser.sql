@@ -1,0 +1,6 @@
+-- ユーザとパスワードを生成
+CREATE ROLE appuser WITH LOGIN PASSWORD 'apppass';
+
+-- 権限を付与
+GRANT SELECT,UPDATE,INSERT,DELETE ON ALL TABLES IN SCHEMA public TO appuser;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO appuser;
