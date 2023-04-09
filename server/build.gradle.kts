@@ -41,12 +41,6 @@ dependencies {
 //	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	// r2dbc connectionprovider
 	implementation("io.github.jooq:jooq-r2dbc:0.1.0")
-
-
-	// jooqの導入
-	implementation("org.jooq:jooq:3.18.0")
-	implementation("org.jooq:jooq-meta:3.18.0")
-	implementation("org.jooq:jooq-codegen:3.18.0")
 }
 
 tasks.withType<KotlinCompile> {

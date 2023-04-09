@@ -1,26 +1,27 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jooq.meta.jaxb.ForcedType
+import nu.studer.gradle.jooq.JooqEdition
 import org.jooq.meta.jaxb.Logging
-import org.jooq.meta.jaxb.Property
+
+plugins {
+	id("nu.studer.jooq") version "8.1"
+	id("java")
+}
 
 repositories {
 	mavenCentral()
 }
 
-plugins {
-	id("nu.studer.jooq") version "8.1"
-	kotlin("jvm") version "1.7.22"
-}
-
 dependencies {
-	implementation("org.jooq:jooq:3.18.0")
-	implementation("org.jooq:jooq-codegen:3.18.0")
+	jooqGenerator("org.postgresql:postgresql:42.2.23")
 }
 
 jooq {
+	version.set("3.18.0")
+	edition.set(JooqEdition.OSS)
+
 	configurations {
 		create("main") {
 			jooqConfiguration.apply {
+				logging = Logging.WARN
 				jdbc.apply {
 					driver = "org.postgresql.Driver"
 					url = "jdbc:postgresql://localhost:5432/dev"
@@ -28,16 +29,22 @@ jooq {
 					password = "root"
 				}
 				generator.apply {
+					name = "org.jooq.codegen.DefaultGenerator"
 					database.apply {
 						name = "org.jooq.meta.postgres.PostgresDatabase"
-						includes = ".*"
-						excludes = ""
 						inputSchema = "public"
 					}
-					target.apply {
-						packageName = "com.helloworld.hello"
-						directory = "src/main/kotlin"
+					generate.apply {
+						isDeprecated = false
+						isRecords = false
+						isImmutablePojos = false
+						isFluentSetters = false
 					}
+					target.apply {
+						packageName = "com.helloworld.hello.generated"
+						directory = "src/main/kotlin/com/helloworld/hello/generated"
+					}
+					strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
 				}
 			}
 		}

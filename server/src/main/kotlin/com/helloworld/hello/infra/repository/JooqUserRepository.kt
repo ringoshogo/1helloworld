@@ -11,6 +11,6 @@ class JooqUserRepository(
 ) {
 
     suspend fun saveAll(list: List<TodoUser>) {
-//        dslContext.insertInto(Use)
+        dslContext.insertInto()
     }
 }
