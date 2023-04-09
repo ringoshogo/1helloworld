@@ -1,3 +1,3 @@
 rootProject.name = "hello"
 
-include("flyway")
+include(":flyway")

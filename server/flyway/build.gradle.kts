@@ -41,7 +41,7 @@ jooq {
 						isFluentSetters = false
 					}
 					target.apply {
-						packageName = "com.helloworld.hello.generated"
+						packageName = "generated.com.helloworld.hello"
 						directory = "src/main/kotlin/com/helloworld/hello/generated"
 					}
 					strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
