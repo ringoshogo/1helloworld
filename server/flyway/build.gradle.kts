@@ -42,7 +42,7 @@ jooq {
 					}
 					target.apply {
 						packageName = "generated.com.helloworld.hello"
-						directory = "src/main/kotlin/com/helloworld/hello/generated"
+						directory = "src/main/kotlin/generated"
 					}
 					strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
 				}
