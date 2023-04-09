@@ -16,6 +16,16 @@ repositories {
 	mavenCentral()
 }
 
+sourceSets {
+	main {
+		kotlin {
+			srcDirs("src/main/kotlin")
+		}
+	}
+}
+
+
+
 dependencies {
 	implementation(project(":flyway"))
 
